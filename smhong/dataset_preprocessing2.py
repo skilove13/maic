@@ -75,4 +75,5 @@ np.savez('ecg_adult_data6.npz', ecg_adult_data_array=ecg_adult_data_array)
 
 end = time.time()  # 종료 시간 저장
 print("npz save time :", end - start)  # 현재시각 - 시작시간 = 실행 시간
+print("ecg_adult_data_array[0].shape=", ecg_adult_data_array[0].shape)
 
