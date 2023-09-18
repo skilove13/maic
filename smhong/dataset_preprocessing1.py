@@ -39,7 +39,12 @@ print("ecg_data_example[0]=", ecg_data_example)
 ecg_data_list = []
 i = 0
 # 각 파일을 읽어와서 리스트에 추가
-for file_path in ecg_child_data[0:]:
+#for file_path in ecg_child_data[0:5000]:
+#for file_path in ecg_child_data[5000:]:
+#for file_path in ecg_child_data[0:2500]:
+for file_path in ecg_child_data[2500:5000]:
+#for file_path in ecg_child_data[5000:7500]:
+#for file_path in ecg_child_data[7500:]:
     ecg_data = np.load(file_path)
     # 데이터를 12개로 나누고 (5000, 12) 형식으로 저장
     ecg_data_split = np.array_split(ecg_data, 5000)

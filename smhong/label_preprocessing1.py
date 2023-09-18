@@ -33,10 +33,19 @@ print(y_child_train[0:10])
 y_child_train = [value[0] for value in y_child_train]
 print(y_child_train[0:10])
 
+#y_child_train1 = y_child_train[0:5000]
+y_child_train1 = y_child_train[0:2500]
+y_child_train2 = y_child_train[5000:]
+
+print(len(y_child_train1))
+print(len(y_child_train2))
+
+print(y_child_train1[0:10])
 
 # AGE 프레임을 npz 파일로 저장
-np.savez('y_child_train.npz', y_child_train=y_child_train)
-
+# np.savez('y_child_train0.npz', y_child_train=y_child_train1)
+#np.savez('y_child_train1.npz', y_child_train=y_child_train2)
+np.savez('y_child_train.npz', y_child_train=y_child_train1)
 # # npz 파일을 읽어와서 데이터프레임으로 저장
 # y_child_train = np.load('y_child_train.npz')
 # y_child_train = y_child_train['y_child_train']
