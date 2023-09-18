@@ -60,7 +60,7 @@ print("ecg_data_array의 shape:", ecg_child_data_array.shape)
 
 start = time.time()  # 시작 시간 저장
 # npz 파일로 저장
-np.savez('ecg_child_data.npz', ecg_child_data_array=ecg_child_data_array)
+np.savez('ecg_child_data1.npz', ecg_child_data_array=ecg_child_data_array)
 
 end = time.time()  # 종료 시간 저장
 print("npz save time :", end - start)  # 현재시각 - 시작시간 = 실행 시간
