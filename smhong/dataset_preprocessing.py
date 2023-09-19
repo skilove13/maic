@@ -32,6 +32,9 @@ print(item['GENDER'].value_counts())
 category_counts1=item['AGE'].value_counts()
 print(item['AGE'].value_counts())
 
+print("child age max value =", item['AGE'].max())
+print("child age min value =", item['AGE'].min())
+
 # barplot
 plt.bar(category_counts.index, category_counts.values, color='skyblue')
 plt.xlabel('GENDER')
@@ -60,6 +63,9 @@ print('legth:',len(item1))
 print('결측치:', item1.isna().sum())
 duplicates_count = item1['FILENAME'].duplicated().sum()
 print("중복된 값의 개수:", duplicates_count)
+
+print("adult age max value =", item1['AGE'].max())
+print("adult age min value =", item1['AGE'].min())
 
 print('summary:', item1.describe())
 

@@ -10,6 +10,7 @@ from sklearn.metrics import roc_curve
 from tensorflow.keras import layers, models
 from tensorflow.keras.utils import to_categorical
 from model_resnet import *
+from model_swin_transformer import *
 
 import pandas as pd
 import numpy as np
@@ -62,12 +63,19 @@ print("y_vali_child[0:10]=", y_vali_child[0:10])
 print("y_train_child.min()=", y_train_child.min())
 print("y_train_child.max()=", y_train_child.max())
 
-# One-Hot 인코딩
-y_train_child_encoded = to_categorical(y_train_child, num_classes=9)
+# One-Hot 인코딩 , Max adult age = 122
+y_train_child_encoded = to_categorical(y_train_child, num_classes=123)
 print("y_train_child_encoded[0:10]=", y_train_child_encoded[0:10])
 
-y_vali_child_encoded = to_categorical(y_vali_child, num_classes=9)
+y_vali_child_encoded = to_categorical(y_vali_child, num_classes=123)
 print("y_vali_child_encoded[0:10]=", y_vali_child_encoded[0:10])
+
+# 레이블 데이터를 스케일링하여 정수 범위로 변환
+scaled_y_train_child = (y_train_child - y_train_child.min()) / (y_train_child.max() - y_train_child.min())
+
+# 스케일링된 데이터 출력
+print("scaled_y_train_child[0:10] =", scaled_y_train_child[0:10])
+
 
 BATCH_SIZE = 10
 
@@ -77,17 +85,18 @@ valid_dset = tf.data.Dataset.from_tensor_slices((X_vali_child, y_vali_child_enco
 # 모델 생성
 #model = cnn_model()
 #model = resnet_model()
-#model = resnet19_model()
-model = resnet110_model()
+model = resnet19_model()
+#model = resnet110_model()
+# model = create_swin_transformer_model()
 
 # 모델 컴파일
 optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 # 모델 아키텍처 요약
-model.summary()
-
-# 모델 학습 , train_dset, valid_dset
-model.fit(train_dset, epochs=100, validation_data=valid_dset)
-
-print("model training complete!!!")
+# model.summary()
+#
+# # 모델 학습 , train_dset, valid_dset
+# model.fit(train_dset, epochs=100, validation_data=valid_dset)
+#
+# print("model training complete!!!")

@@ -33,7 +33,7 @@ def resnet_model():
     # 전연결 레이어
     x = layers.GlobalAveragePooling1D()(x)
     x = layers.Dense(64, activation='relu')(x)
-    x = layers.Dense(9, activation='softmax')(x)  # 8개의 클래스에 대한 softmax 출력
+    x = layers.Dense(123, activation='softmax')(x)  # 123개의 클래스에 대한 softmax 출력
 
     # 모델 생성
     model = models.Model(inputs=inputs, outputs=x)
@@ -80,7 +80,7 @@ def resnet19_model():
     # 전연결 레이어
     x = layers.GlobalAveragePooling1D()(x)
     x = layers.Dense(64, activation='relu')(x)
-    x = layers.Dense(9, activation='softmax')(x)  # 8개의 클래스에 대한 softmax 출력
+    x = layers.Dense(123, activation='softmax')(x)  # 123개의 클래스에 대한 softmax 출력
 
     # 모델 생성
     model = models.Model(inputs=inputs, outputs=x)
@@ -129,7 +129,7 @@ def resnet32_model():
     # 전연결 레이어
     x = layers.GlobalAveragePooling1D()(x)
     x = layers.Dense(64, activation='relu')(x)
-    x = layers.Dense(9, activation='softmax')(x)  # 8개의 클래스에 대한 softmax 출력
+    x = layers.Dense(123, activation='softmax')(x)  # 123개의 클래스에 대한 softmax 출력
 
     # 모델 생성
     model = models.Model(inputs=inputs, outputs=x)
@@ -181,7 +181,7 @@ def resnet56_model():
     # 전연결 레이어
     x = layers.GlobalAveragePooling1D()(x)
     x = layers.Dense(64, activation='relu')(x)
-    x = layers.Dense(9, activation='softmax')(x)  # 8개의 클래스에 대한 softmax 출력
+    x = layers.Dense(123, activation='softmax')(x)  # 123개의 클래스에 대한 softmax 출력
 
     # 모델 생성
     model = models.Model(inputs=inputs, outputs=x)
@@ -232,7 +232,7 @@ def resnet110_model():
     # 전연결 레이어
     x = layers.GlobalAveragePooling1D()(x)
     x = layers.Dense(64, activation='relu')(x)
-    x = layers.Dense(9, activation='softmax')(x)  # 8개의 클래스에 대한 softmax 출력
+    x = layers.Dense(123, activation='softmax')(x)  # 123개의 클래스에 대한 softmax 출력
 
     # 모델 생성
     model = models.Model(inputs=inputs, outputs=x)
