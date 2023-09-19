@@ -14,8 +14,8 @@ import numpy as np
 directory_path = '/home/work/ecg-age-prediction/ecg-age-prediction-main/competition/input/input_v2/'
 
 data = np.load(directory_path + 'ecg_child_data0.npz')                      #이름 바꾸기
-# npz 파일에서 배열을 추출합니다. 예를 들어, 'data'라는 키를 사용하면 다음과 같습니다.
-data_array = data['ecg_adult_data_array']
+# npz 파일에서 배열을 추출합니다. 
+data_array = data['ecg_adult_data_array']                                    #이름 확인
 
 
 # 세 번째 차원(lead)을 정규화합니다.
