@@ -22,7 +22,8 @@ from sklearn.metrics import roc_curve
 import time
 
 # This method loads your data from the .npz file
-directory_path='/users/VC/sungman.hong/PycharmProjects/pythonProject/maic/dataset/'
+#directory_path='/users/VC/sungman.hong/PycharmProjects/pythonProject/maic/dataset/'
+directory_path = 'E:/smhong/micai_ai_challange/maic_github/maic/smhong/'
 
 data = np.load(directory_path + 'ecg_child_data0.npz')
 X_train_child = data['ecg_child_data_array']
@@ -76,7 +77,8 @@ valid_dset = tf.data.Dataset.from_tensor_slices((X_vali_child, y_vali_child_enco
 # 모델 생성
 #model = cnn_model()
 #model = resnet_model()
-model = resnet19_model()
+#model = resnet19_model()
+model = resnet110_model()
 
 # 모델 컴파일
 optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
