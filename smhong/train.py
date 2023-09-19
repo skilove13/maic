@@ -21,14 +21,16 @@ from sklearn.metrics import roc_curve
 import time
 
 # This method loads your data from the .npz file
+Root = 'E:/smhong/micai_ai_challange/maic_github/maic/smhong/'
 
-data = np.load('ecg_child_data.npz')
+#data = np.load('ecg_child_data.npz')
+data = np.load(Root + 'ecg_child_data0.npz')
 X_train_child = data['ecg_child_data_array']
 
 print("X_train_child.shape=", X_train_child.shape)
 print("X_train_child[0].shape=", X_train_child[0].shape)
 
-data1 = np.load('y_child_train.npz')
+data1 = np.load('y_child_train0.npz')
 y_train_child = data1['y_child_train']
 
 print("y_train_child.shape=", y_train_child.shape)
@@ -71,7 +73,7 @@ model.add(layers.MaxPooling1D(pool_size=2))
 # 전연결 레이어
 model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
-model.add(layers.Dense(8, activation='softmax'))  # 101개의 클래스에 대한 softmax 출력
+model.add(layers.Dense(1, activation='softmax'))  # 101개의 클래스에 대한 softmax 출력
 
 # 모델 컴파일
 optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
@@ -81,6 +83,6 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 model.summary()
 
 # 모델 학습
-model.fit(train_dset, epochs=2)
+model.fit(train_dset, epochs=10)
 
 print("model training complete!!!")
