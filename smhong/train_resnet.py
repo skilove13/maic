@@ -9,7 +9,6 @@ import tensorflow as tf
 from sklearn.metrics import roc_curve
 from tensorflow.keras import layers, models
 from tensorflow.keras.utils import to_categorical
-from model_cnn import cnn_model
 from model_resnet import *
 
 import pandas as pd
