@@ -16,28 +16,6 @@ directory_path = '/users/VC/sungman.hong/PycharmProjects/pythonProject/maic/data
 # 데이터셋 파일명
 train_datasets = ['ecg_adult_data0.npz', 'ecg_adult_data1.npz', 'ecg_adult_data2.npz', 'ecg_adult_data3.npz', 'ecg_adult_data4.npz', 'ecg_adult_data5.npz', 'ecg_adult_data6.npz', 'ecg_child_data0.npz', 'ecg_child_data1.npz']
 y_train_datasets = ['y_adult_train0.npz', 'y_adult_train1.npz', 'y_adult_train2.npz', 'y_adult_train3.npz', 'y_adult_train4.npz', 'y_adult_train_5.npz' , 'y_adult_train6.npz', 'y_child_train0.npz','y_child_train1.npz']
-valid_datasets = ['ecg_adult_data0.npz']
-y_valid_datasets = ['y_adult_train0.npz']
-
-# Validation dataset
-
-data2 = np.load(directory_path + 'ecg_adult_data6.npz')
-data3 = np.load(directory_path + 'y_adult_train6.npz')
-
-x_val_adult = data2['ecg_adult_data_array']
-y_val_adult = data3['y_adult_train']
-
-# y_val_child의 소숫점값을 정수로 변환
-y_val_adult = y_val_adult.astype(int)
-print("y_val_child[0:10]=", y_val_adult[0:10])
-
-#y_val_child의 최소값과 최대값 출력
-print("y_val_adult.min()=", y_val_adult.min())
-print("y_val_adult.max()=", y_val_adult.max())
-
-# One-Hot 인코딩 , Max adult age = 122
-y_val_adult_encoded = to_categorical(y_val_adult, num_classes=123)
-print("y_val_adult_encoded[0:10]=", y_val_adult_encoded[0:10])
 
 # 데이터셋 리스트를 모든 경우의 수로 4개씩 묶음
 train_datasets_grouped = []
