@@ -3,6 +3,17 @@
 
 
 
+resnet19_model_adult
+
+training 한 후 저장된 모델의 이름
+
+
+
+---
+
+기존꺼
+
+
 
 
 
