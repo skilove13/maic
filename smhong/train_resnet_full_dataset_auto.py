@@ -15,7 +15,7 @@ directory_path = '/users/VC/sungman.hong/PycharmProjects/pythonProject/maic/data
 
 # 데이터셋 파일명
 train_datasets = ['ecg_adult_data0.npz', 'ecg_adult_data1.npz', 'ecg_adult_data2.npz', 'ecg_adult_data3.npz', 'ecg_adult_data4.npz', 'ecg_adult_data5.npz', 'ecg_adult_data6.npz', 'ecg_child_data0.npz', 'ecg_child_data1.npz']
-y_train_datasets = ['y_adult_train0.npz', 'y_adult_train1.npz', 'y_adult_train2.npz', 'y_adult_train3.npz', 'y_adult_train4.npz', 'y_adult_train_5.npz' , 'y_adult_train6.npz', 'y_child_train0.npz','y_child_train1.npz']
+y_train_datasets = ['y_adult_train0.npz', 'y_adult_train1.npz', 'y_adult_train2.npz', 'y_adult_train3.npz', 'y_adult_train4.npz', 'y_adult_train5.npz' , 'y_adult_train6.npz', 'y_child_train0.npz','y_child_train1.npz']
 
 # 데이터셋 리스트를 모든 경우의 수로 4개씩 묶음
 train_datasets_grouped = []
@@ -98,5 +98,10 @@ for i, (train_group, y_train_group) in enumerate(zip(train_datasets_grouped, y_t
     end_time = time.time()
     print("trained time :", end_time - start_time)
     print("end 1 model training")
+
+    del train_dset
+    del model
+    del x_train_adult
+    del y_train_adult
 
     print("==================================================")
