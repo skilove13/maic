@@ -39,14 +39,9 @@ print("y_val_adult.max()=", y_val_adult.max())
 y_val_adult_encoded = to_categorical(y_val_adult, num_classes=123)
 print("y_val_adult_encoded[0:10]=", y_val_adult_encoded[0:10])
 
-
-# 데이터셋 리스트를 4개씩 묶음
-# train_datasets_grouped = [train_datasets[i:i+4]for i in range(0, len(train_datasets), 4)]
-# y_train_datasets_grouped = [y_train_datasets[i:i+4]for i in range(0, len(y_train_datasets), 4)]
 # 데이터셋 리스트를 모든 경우의 수로 4개씩 묶음
 train_datasets_grouped = []
 y_train_datasets_grouped = []
-
 
 #
 for i in range(1, 5):
@@ -99,26 +94,7 @@ for i, (train_group, y_train_group) in enumerate(zip(train_datasets_grouped, y_t
     # One-Hot 인코딩
     y_train_adult_encoded = to_categorical(y_train_adult, num_classes=123)
 
-    # 검증 데이터셋
-    x_val_adult = []
-    y_val_adult = []
-
-    # x_val_adult 데이터셋 선택
-    # x_val_dataset = random.choice(train_group)
-    # data = np.load(directory_path + x_val_dataset)
-    # if 'child' in x_val_dataset:
-    #     x_val_adult = data['ecg_child_data_array']
-    #     y_val_adult = data['y_child_train']
-    # else:
-    #     x_val_adult = data['ecg_adult_data_array']
-    #     y_val_adult = data['y_adult_train']
-    #
-    # # y_val_adult의 소숫점값을 정수로 변환
-    # y_val_adult = y_val_adult.astype(int)
-    #
-    # # One-Hot 인코딩
-    # y_val_adult_encoded = to_categorical(y_val_adult, num_classes=123)
-
+    #multi gpu 사용시 code 추가
     strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy()
 
     # 데이터셋 shuffle 및 batch 처리
@@ -129,12 +105,10 @@ for i, (train_group, y_train_group) in enumerate(zip(train_datasets_grouped, y_t
     # 모델 로드
     print("model_number=", model_number)
     model_path = '/users/VC/sungman.hong/PycharmProjects/pythonProject/maic/model'
+    #multi gpu 사용시 code로 변경
     with strategy.scope():
         model = tf.keras.models.load_model(model_path + '/resnet19_model_adult' +str(model_number) + '.h5')
         model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-
-    # # 모델 컴파일
-    # optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
 
     start_time = time.time()
     # 학습
