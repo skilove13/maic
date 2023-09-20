@@ -1,0 +1,8 @@
+#Evaluation dataset1
+Sami-Trop: 12-lead ECG traces with age and mortality annotations
+data shape : (4096,12)
+N=1631
+
+#download location
+https://zenodo.org/record/4905618
+download (`exams.csv` and `exams.hdf5`) at the link.
