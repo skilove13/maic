@@ -9,6 +9,7 @@ from sklearn.metrics import roc_curve
 from tensorflow.keras.utils import to_categorical
 from itertools import combinations
 import time
+from sklearn.model_selection import train_test_split
 
 # 데이터셋 경로
 directory_path = '/users/VC/sungman.hong/PycharmProjects/pythonProject/maic/dataset/'
@@ -77,8 +78,11 @@ for i, (train_group, y_train_group) in enumerate(zip(train_datasets_grouped, y_t
 
     # 데이터셋 shuffle 및 batch 처리
     BATCH_SIZE = 64
-    train_dset = tf.data.Dataset.from_tensor_slices((x_train_adult, y_train_adult_encoded)).shuffle(buffer_size=len(x_train_adult)).batch(BATCH_SIZE)
-#    valid_dset = tf.data.Dataset.from_tensor_slices((x_val_adult, y_val_adult_encoded)).shuffle(buffer_size=len(x_val_adult)).batch(BATCH_SIZE)
+    #train_dset = tf.data.Dataset.from_tensor_slices((x_train_adult, y_train_adult_encoded)).shuffle(buffer_size=len(x_train_adult)).batch(BATCH_SIZE)
+    #valid_dset = tf.data.Dataset.from_tensor_slices((x_val_adult, y_val_adult_encoded)).shuffle(buffer_size=len(x_val_adult)).batch(BATCH_SIZE)
+    x_train , x_test , y_train , y_test = train_test_split(x_train_adult, y_train_adult_encoded, test_size=0.1, random_state=42)
+    train_dset = tf.data.Dataset.from_tensor_slices((x_train, y_train)).shuffle(buffer_size=len(x_train)).batch(BATCH_SIZE)
+    valid_dset = tf.data.Dataset.from_tensor_slices((x_test, y_test)).shuffle(buffer_size=len(x_test)).batch(BATCH_SIZE)
 
     # 모델 로드
     print("model_number=", model_number)
